@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import './App.scss';
+import meals from './meals.json';
+import MealBox from './components/MealBox';
 
-import meals from './meals';
 
 class App extends Component {
+  state = {
+    allMeals: meals,
+  }
   render() {
     return (
-      <div>
-        <p>Sample App</p>
+      <div className="App">
+        {this.state.allMeals.map(meal => {
+          return (
+            <MealBox name={meal.name} calories={meal.calories} image={meal.image}/> 
+          )
+        })}
       </div>
     );
   }
